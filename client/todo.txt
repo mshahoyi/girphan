@@ -1,0 +1,2 @@
+Model
+	The app has pocket, which holds money. Its basically a number, but it can opitonally be girphanated (divided to pockets)
