@@ -1,2 +1,5 @@
 Model
 	The app has pocket, which holds money. Its basically a number, but it can opitonally be girphanated (divided to pockets)
+
+
+determine the type of function in typescript and use it in useForm hook
