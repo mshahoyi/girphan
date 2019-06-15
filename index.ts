@@ -5,7 +5,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, "client/build")));
 
 app.get("*", (req, res) => {
-	res.sendFile("/client/public/index.html");
+	res.sendFile("/client/build/index.html");
 });
 
 const port = process.env.PORT || 5000;
