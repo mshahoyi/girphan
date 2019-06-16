@@ -1,14 +1,11 @@
 import React from "react";
 import Transaction from "./components/transaction";
+import { postTransaction } from "./api";
 
 const App: React.FC = () => {
 	return (
 		<div className="App">
-			<Transaction
-				onSubmit={(values: any) => {
-					console.log(values);
-				}}
-			/>
+			<Transaction onSubmit={postTransaction} />
 		</div>
 	);
 };

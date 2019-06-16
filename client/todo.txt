@@ -1,7 +1,8 @@
-Model
-	The app has pocket, which holds money. Its basically a number, but it can opitonally be girphanated (divided to pockets)
+
 
 
 determine the type of function in typescript and use it in useForm hook
+url pathways should all be collected and synchronised between backend and frontend
 
-test the useForm hook
+accept the api call in the backend
+create a new entry for the submitted transaction in the database
