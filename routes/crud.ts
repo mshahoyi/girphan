@@ -1,11 +1,8 @@
-const router = require("express").Router();
-const Transaction = require("../db/transactions.ts");
+import express from "express";
+const router = express.Router();
+import Transaction from "../db/transactions";
 
-router.get("/", (req, res) => {
-	res.send("hello there");
-});
-
-router.post("/", (req, res) => {
+router.post("/", (req: express.Request, res: express.Response) => {
 	let transaction = req.body;
 	console.log(transaction);
 	new Transaction(transaction).save((err, trans) => {
