@@ -1,17 +1,12 @@
 import React, { useState, ChangeEvent } from "react";
 import useForm from "../hooks/useForm";
 
-const Transaction = () => {
-	const onSubmit = (e: any) => {
-		e.preventDefault();
-		console.log(values);
-	};
-
-	const { values, handleChange } = useForm();
+const Transaction = ({ onSubmit }: { onSubmit: (_: any) => void }) => {
+	const { handleChange, handleSubmit } = useForm(onSubmit);
 
 	return (
 		<div>
-			<form onSubmit={onSubmit}>
+			<form onSubmit={handleSubmit}>
 				<label htmlFor="description">Description</label>
 				<input
 					placeholder="Description"
@@ -29,13 +24,13 @@ const Transaction = () => {
 				/>
 				<label htmlFor="date">Date</label>
 				<input
-					type="date"
+					// type="date"
 					placeholder="Date"
 					id="date"
 					onChange={handleChange}
 					name="date"
 				/>
-				<input type="submit" />
+				<button type="submit">Submit</button>
 			</form>
 		</div>
 	);

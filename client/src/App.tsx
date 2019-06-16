@@ -4,7 +4,11 @@ import Transaction from "./components/transaction";
 const App: React.FC = () => {
 	return (
 		<div className="App">
-			<Transaction />
+			<Transaction
+				onSubmit={(values: any) => {
+					console.log(values);
+				}}
+			/>
 		</div>
 	);
 };
