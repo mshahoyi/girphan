@@ -24,7 +24,7 @@ const Transaction = ({ onSubmit }: { onSubmit: (_: any) => void }) => {
 				/>
 				<label htmlFor="date">Date</label>
 				<input
-					// type="date"
+					type="date"
 					placeholder="Date"
 					id="date"
 					onChange={handleChange}

@@ -6,3 +6,5 @@ url pathways should all be collected and synchronised between backend and fronte
 
 accept the api call in the backend
 create a new entry for the submitted transaction in the database
+
+try backend programming with typescript
