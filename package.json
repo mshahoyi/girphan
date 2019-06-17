@@ -11,7 +11,8 @@
 		"typescript": "^3.5.2"
 	},
 	"scripts": {
-		"start": "nodemon --exec ./node_modules/.bin/ts-node -- ./index.ts",
+		"server": "nodemon --exec ./node_modules/.bin/ts-node -- ./index.ts",
+		"start": "./node_modules/.bin/ts-node ./index.ts",
 		"heroku-postbuild": "cd client && yarn && yarn run build"
 	},
 	"devDependencies": {
