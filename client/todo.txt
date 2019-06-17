@@ -1,12 +1,10 @@
 
 
 
-determine the type of function in typescript and use it in useForm hook
 url pathways should all be collected and synchronised between backend and frontend
 
 create a new entry for the submitted transaction in the database
 
-try backend programming with typescript
 find better names for url pathes
 create a middleware that first checks user status before posting or getting transactions
 create authentification
@@ -14,3 +12,5 @@ create authentification
 make it functional as soon as possible
 
 enable logging
+
+use react-table for the tables
