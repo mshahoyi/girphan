@@ -17,7 +17,7 @@ describe("useForm Hook", () => {
 		const { getByPlaceholderText, getByText } = render(
 			<Transaction onSubmit={mockfn} />
 		);
-		fireEvent.click(getByText("Submit"));
+		fireEvent.click(getByText("ADD"));
 
 		expect(mockfn.mock.calls.length).toEqual(1);
 	});

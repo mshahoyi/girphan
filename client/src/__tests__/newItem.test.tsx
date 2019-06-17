@@ -12,12 +12,12 @@ describe("NewItem component", () => {
 		expect(
 			getByPlaceholderText("Number of the items you bought")
 		).toBeDefined();
-		// expect(getByPlaceholderText("Price of one item")).toBeDefined();
-		// expect(getByPlaceholderText("Price of all the items")).toBeDefined();
-		// expect(getByPlaceholderText("Category")).toBeDefined();
-		// expect(getByPlaceholderText("Tag(s)")).toBeDefined();
+		expect(getByPlaceholderText("Price of one item")).toBeDefined();
+		expect(getByPlaceholderText("Price of all the items")).toBeDefined();
+		expect(getByPlaceholderText("Category")).toBeDefined();
+		expect(getByPlaceholderText("Tag(s)")).toBeDefined();
 		expect(getByPlaceholderText("Date")).toBeDefined();
-		// expect(getByPlaceholderText("Description")).toBeDefined();
+		expect(getByPlaceholderText("Description")).toBeDefined();
 	});
 
 	it("has an Add button (for submission) and submits with the data provided in the form", () => {
@@ -34,20 +34,37 @@ describe("NewItem component", () => {
 			target: { value: name }
 		});
 		getByText("ADD").click();
-		expect(mockfn.mock.calls[0][0]).toEqual({ name: name });
+		expect(mockfn.mock.calls[0][0]).toMatchObject({ item: name });
 		expect(mockfn.mock.calls.length).toEqual(1);
 
 		fireEvent.change(getByPlaceholderText("Description"), {
 			target: { value: description }
 		});
 		getByText("ADD").click();
-		expect(mockfn.mock.calls[1][0]).toEqual({
-			name: name,
+		expect(mockfn.mock.calls[1][0]).toMatchObject({
+			item: name,
 			description: description
 		});
 
 		expect(mockfn.mock.calls.length).toEqual(2);
 	});
 
-	it("default value of date must be today and default value of quantity must be one", () => {});
+	it("default value of date must be today and default value of quantity must be one", () => {
+		let defaultValues;
+		const spy = jest.spyOn(global, "Date");
+		const { getByText } = render(
+			<NewItem onSubmit={values => (defaultValues = values)} />
+		);
+		const addBtn = getByText("ADD");
+		addBtn.click();
+
+		expect(defaultValues).toMatchObject({
+			date: spy.mock.instances[0],
+			quantity: 1
+		});
+	});
+
+	it("All fields are required apart from description, category and tag", () => {});
+
+	it("Unit price and total price of items should be synchronized", () => {});
 });

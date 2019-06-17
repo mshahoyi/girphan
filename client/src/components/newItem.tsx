@@ -1,38 +1,70 @@
-import React from "react";
-import { Form } from "semantic-ui-react";
+import React, { FormEvent } from "react";
+import { Form, Container } from "semantic-ui-react";
 import useForm from "../hooks/useForm";
+import { Purchase, TransactionType } from "../types";
 
-export default function NewItem({
-	onSubmit
-}: {
-	onSubmit: (_: object) => void;
-}) {
-	const { handleChange, handleSubmit } = useForm(onSubmit);
+interface NewItemComponentProps {
+	onSubmit: (purchase: Purchase) => any;
+}
+
+export default function NewItem({ onSubmit }: NewItemComponentProps) {
+	const { values, handleChange } = useForm({
+		date: new Date(),
+		quantity: 1
+	});
+
+	const handleSubmit = (e: FormEvent): void => {
+		e.preventDefault();
+		values.type = TransactionType.Purchase;
+		onSubmit(values);
+	};
 
 	return (
-		<Form onSubmit={handleSubmit}>
-			<Form.Group widths="equal">
+		<Container>
+			<Form onSubmit={handleSubmit}>
 				<Form.Input
-					label="Name"
-					name="name"
+					label="Item Name"
+					name="item"
 					onChange={handleChange}
 					placeholder="Name of the item(s)"
+					required
+				/>
+				<Form.Group widths="equal">
+					<Form.Input
+						label="Quantity"
+						name="quantity"
+						onChange={handleChange}
+						placeholder="Number of the items you bought"
+						value={values.quantity}
+						type="number"
+						required
+					/>
+					<Form.Input
+						label="Price per item"
+						name="price"
+						onChange={handleChange}
+						placeholder="Price of one item"
+						required
+					/>
+					<Form.Input
+						label="Total Price"
+						name="sum"
+						onChange={handleChange}
+						placeholder="Price of all the items"
+						required
+					/>
+				</Form.Group>
+				<Form.Input
+					label="Category"
+					name="category"
+					onChange={handleChange}
+					placeholder="Category"
 				/>
 				<Form.Input
-					label="Quantity"
-					name="quantity"
+					label="Tag(s)"
+					name="tags"
 					onChange={handleChange}
-					placeholder="Number of the items you bought"
-					value={1}
-					type="number"
-				/>
-				<Form.Input
-					label="Date"
-					name="date"
-					onChange={handleChange}
-					placeholder="Date"
-					type="date"
-					value={Date()}
+					placeholder="Tag(s)"
 				/>
 				<Form.Input
 					label="Description"
@@ -40,9 +72,17 @@ export default function NewItem({
 					onChange={handleChange}
 					placeholder="Description"
 				/>
-			</Form.Group>
+				<Form.Input
+					label="Date"
+					name="date"
+					onChange={handleChange}
+					placeholder="Date"
+					value={values.date}
+					required
+				/>
 
-			<Form.Button>ADD</Form.Button>
-		</Form>
+				<Form.Button fluid>ADD</Form.Button>
+			</Form>
+		</Container>
 	);
 }

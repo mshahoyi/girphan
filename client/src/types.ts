@@ -1,20 +1,25 @@
 export interface Transaction {
-	description: string;
-	amount: number;
+	description?: string;
+	sum: number;
 	date: Date;
 	type: TransactionType;
 	category?: string;
-	tag?: string;
+	tags?: [string];
 }
 
-export interface Item {
-	name: string;
+export interface Purchase {
+	item: string;
 	quantity: number;
 	transaction: Transaction;
 	price: number;
 }
 
 export enum TransactionType {
-	Buy,
-	Sell
+	Purchase = 0,
+	Sale
+}
+
+export interface BackendFrontendDataTraffic {
+	e: any;
+	data: any;
 }

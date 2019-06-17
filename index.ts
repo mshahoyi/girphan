@@ -11,7 +11,11 @@ dotenv.config();
 app.use(express.static(path.join(__dirname, "client/build")));
 app.use(bodyParser.json());
 
-const db_uri = process.env.DB_URI || "mongodb://localhost:27017/girphan";
+const db_uri =
+	process.env.NODE_ENV === "development"
+		? "mongodb://localhost:27017/girphan"
+		: process.env.DB_URI;
+console.log("db URI is", db_uri);
 mongoose.connect(db_uri, {
 	useNewUrlParser: true
 });

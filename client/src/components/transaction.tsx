@@ -1,38 +1,56 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import useForm from "../hooks/useForm";
+import { Transaction as TransactionType } from "../types";
+import { Container, Form } from "semantic-ui-react";
 
 const Transaction = ({ onSubmit }: { onSubmit: (_: any) => void }) => {
-	const { handleChange, handleSubmit } = useForm(onSubmit);
+	const { values, handleChange } = useForm();
+
+	const handleSubmit = (e: FormEvent): void => {
+		e.preventDefault();
+		onSubmit(values as TransactionType);
+	};
 
 	return (
-		<div>
-			<form onSubmit={handleSubmit}>
-				<label htmlFor="description">Description</label>
-				<input
-					placeholder="Description"
-					id="description"
+		<Container>
+			<Form onSubmit={handleSubmit}>
+				<Form.Input
+					label="Total Price"
+					name="sum"
 					onChange={handleChange}
-					name="description"
-				/>
-				<label htmlFor="amount">Amount</label>
-				<input
-					type="number"
 					placeholder="Sum"
-					id="amount"
-					onChange={handleChange}
-					name="amount"
+					required
 				/>
-				<label htmlFor="date">Date</label>
-				<input
-					type="date"
-					placeholder="Date"
-					id="date"
+				<Form.Input
+					label="Category"
+					name="category"
 					onChange={handleChange}
+					placeholder="Category"
+				/>
+				<Form.Input
+					label="Tag(s)"
+					name="tags"
+					onChange={handleChange}
+					placeholder="Tag(s)"
+				/>
+				<Form.Input
+					label="Description"
+					name="description"
+					onChange={handleChange}
+					placeholder="Description"
+				/>
+				<Form.Input
+					label="Date"
 					name="date"
+					onChange={handleChange}
+					placeholder="Date"
+					value={values.date}
+					required
 				/>
-				<button type="submit">Submit</button>
-			</form>
-		</div>
+
+				<Form.Button fluid>ADD</Form.Button>
+			</Form>
+		</Container>
 	);
 };
 
