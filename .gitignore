@@ -1,5 +1,9 @@
 node_modules
 
-.DS_Store
+*.DS_Store
 VSCode
 .env
+dist
+yarn-error.log
+yarn.lock
+build

@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import useForm from "../hooks/useForm";
-import { Transaction as TransactionType } from "../types";
+import useForm from "../services/hooks/useForm";
+import { Transaction as TransactionType } from "../services/types";
 import { Container, Form } from "semantic-ui-react";
 
 const Transaction = ({ onSubmit }: { onSubmit: (_: any) => void }) => {

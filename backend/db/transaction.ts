@@ -1,5 +1,5 @@
 import * as mongoose from "mongoose";
-import { Transaction } from "../../client/src/types";
+import { Transaction } from "../../client/src/services/types";
 
 const transactionSchema = new mongoose.Schema({
 	description: { type: String, required: false },

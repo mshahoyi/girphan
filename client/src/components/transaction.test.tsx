@@ -1,5 +1,5 @@
 import { render, cleanup, fireEvent } from "@testing-library/react";
-import Transaction from "../components/transaction";
+import Transaction from "./transaction";
 import React from "react";
 
 describe("useForm Hook", () => {
