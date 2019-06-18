@@ -11,15 +11,22 @@ dotenv.config();
 app.use(express.static(path.join(__dirname, "../client/build")));
 app.use(bodyParser.json());
 
-const local_db_uri = "mongodb://localhost:27017/girphan";
+const local_db_uri = "mongodb://localhost:27017/";
 const db_uri =
 	process.env.NODE_ENV === "development"
 		? local_db_uri
 		: process.env.DB_URI || local_db_uri;
-console.log(db_uri);
-mongoose.connect(db_uri, {
-	useNewUrlParser: true
-});
+mongoose.connect(
+	db_uri,
+	{
+		useNewUrlParser: true,
+		dbName: "girphan"
+	},
+	(e: any) =>
+		console.log(
+			"Error connecting to database with URI " + db_uri + " due to " + e
+		)
+);
 const db = mongoose.connection;
 db.once("open", () => console.log("database connected"));
 

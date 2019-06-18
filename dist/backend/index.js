@@ -13,13 +13,14 @@ var dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 app.use(express_1.default.static(path.join(__dirname, "../client/build")));
 app.use(bodyParser.json());
-var local_db_uri = "mongodb://localhost:27017/girphan";
+var local_db_uri = "mongodb://localhost:27017/";
 var db_uri = process.env.NODE_ENV === "development"
     ? local_db_uri
     : process.env.DB_URI || local_db_uri;
 console.log(db_uri);
 mongoose.connect(db_uri, {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    dbName: "girphan"
 });
 var db = mongoose.connection;
 db.once("open", function () { return console.log("database connected"); });
