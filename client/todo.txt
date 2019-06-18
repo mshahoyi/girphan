@@ -9,3 +9,5 @@ make it functional as soon as possible
 enable logging
 
 read on spys in testing
+
+solve typescript backend problem

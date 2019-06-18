@@ -1,7 +1,7 @@
 import React, { FormEvent } from "react";
 import { Form, Container } from "semantic-ui-react";
 import useForm from "../hooks/useForm";
-import { Purchase, TransactionType } from "../types";
+import { Purchase, TransactionType } from "../../../shared/types";
 
 interface NewItemComponentProps {
 	onSubmit: (purchase: Purchase) => any;

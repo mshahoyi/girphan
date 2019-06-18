@@ -12,8 +12,9 @@
 	},
 	"scripts": {
 		"server": "nodemon --exec ./node_modules/.bin/ts-node -- ./index.ts",
-		"start": "./node_modules/.bin/ts-node ./index.ts",
-		"heroku-postbuild": "cd client && yarn && yarn run build"
+		"start": "node dist/backend/index.js",
+		"heroku-postbuild": "cd client && yarn && yarn run build",
+		"build": "tsc --build tsconfig.json && yarn run start"
 	},
 	"devDependencies": {
 		"@types/dotenv": "^6.1.1",

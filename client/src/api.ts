@@ -1,4 +1,4 @@
-import { Transaction, Purchase } from "./types";
+import { Transaction, Purchase } from "../../shared/types";
 import axios from "axios";
 
 export function postTransaction(

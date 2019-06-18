@@ -2,7 +2,7 @@ import express from "express";
 const path = require("path");
 const app = express();
 const bodyParser = require("body-parser");
-const crudRouter = require("./routes/crud.ts");
+const crudRouter = require("./routes/crud");
 const mongoose = require("mongoose");
 import dotenv from "dotenv";
 
@@ -11,11 +11,12 @@ dotenv.config();
 app.use(express.static(path.join(__dirname, "client/build")));
 app.use(bodyParser.json());
 
+const local_db_uri = "mongodb://localhost:27017/girphan";
 const db_uri =
 	process.env.NODE_ENV === "development"
-		? "mongodb://localhost:27017/girphan"
-		: process.env.DB_URI;
-console.log("db URI is", db_uri);
+		? local_db_uri
+		: process.env.DB_URI || local_db_uri;
+console.log(db_uri);
 mongoose.connect(db_uri, {
 	useNewUrlParser: true
 });
