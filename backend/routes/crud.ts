@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
 import Purchase from "../db/purchase";
-import { BackendFrontendDataTraffic } from "../../shared/types";
+import { BackendFrontendDataTraffic } from "../../client/src/types";
 
 router.post("/", (req: express.Request, res: express.Response) => {
 	const purchase = req.body as BackendFrontendDataTraffic;

@@ -8,7 +8,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join(__dirname, "../client/build")));
 app.use(bodyParser.json());
 
 const local_db_uri = "mongodb://localhost:27017/girphan";

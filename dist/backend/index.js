@@ -11,7 +11,7 @@ var crudRouter = require("./routes/crud");
 var mongoose = require("mongoose");
 var dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
-app.use(express_1.default.static(path.join(__dirname, "client/build")));
+app.use(express_1.default.static(path.join(__dirname, "../client/build")));
 app.use(bodyParser.json());
 var local_db_uri = "mongodb://localhost:27017/girphan";
 var db_uri = process.env.NODE_ENV === "development"
